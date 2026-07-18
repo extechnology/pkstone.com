@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const FeaturedProducts = () => {
   const { carousel, loading } = useCarousel();
-  console.log(carousel, "carousel");
 
   const slugify = (text) => {
     return text
@@ -21,9 +20,6 @@ const FeaturedProducts = () => {
   const categoryName = carousel?.[0]?.title ?? ""; // e.g., "Indian Marbles"
   const categorySlug = slugify(categoryName);
 
-  console.log(categorySlug, "categorySlug"); // "indian-marbles"
-
-  console.log(categoryName, "categoryName");
 
   if (loading) return <p>Loading ......</p>;
   

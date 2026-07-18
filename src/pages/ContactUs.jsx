@@ -19,10 +19,16 @@ const ContactUs = () => {
     e.preventDefault();
     setStatus(null);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/contact/",
+      await axios.post(
+        "http://server.pkstones.com/api/contact/",
         formData
       );
+
+      const whatsappNumber = "919447426004";
+      const messageText = `*New Contact Form Submission*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Message:* ${formData.message}`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
+      window.open(whatsappUrl, "_blank");
+
       setStatus("success");
       setFormData({ email: "", name: "", phone: "", message: "" });
     } catch (error) {

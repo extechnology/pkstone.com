@@ -20,11 +20,6 @@ const Preview = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  console.log(products, "products");
-  console.log(preview, "preview");
-  console.log(selectedProduct, "selectedProduct");
-  console.log(image, "productImages");
-  console.log(categoryName, "categoryName");
 
   const filteredProducts = Array.isArray(products)
     ? products.filter((item) => item.category === categoryName)
@@ -161,9 +156,13 @@ const Preview = () => {
       </Modal>
 
       <div className="flex justify-center pt-5">
-        <button className="p-3 rounded-4xl shadow-md hover:scale-110 text-stone-50 duration-300 hover:from-blue-500 hover:to-blue-700 bg-gradient-to-r from-blue-600 to-blue-500 mb-10">
+        <a
+          href={`https://wa.me/919447426004?text=Hi, I am interested in ${categoryName}`}
+          target="_blank"
+          className="p-3 rounded-4xl shadow-md hover:scale-110 text-stone-50 duration-300 hover:from-blue-500 hover:to-blue-700 bg-gradient-to-r from-blue-600 to-blue-500 mb-10"
+        >
           Contact For More Queries
-        </button>
+        </a>
       </div>
     </div>
   );

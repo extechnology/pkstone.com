@@ -45,31 +45,34 @@ const Gallery = () => {
   return (
     <div>
       <div className="bg-gray-600 h-80">
-        <h1 className="text-center relative top-1/2 font-bold text-7xl opacity-90 text-stone-50">
-          Product Gallery
+        <h1 className="text-center relative top-1/2 transform -translate-y-1/2 font-bold text-7xl text-stone-50">
+          Project Gallery
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 py-10 max-w-7xl mx-auto gap-5 px-5 md:px-0">
-        {gallery.map((item) => (
-          <div
-            key={item.id}
-            className="rounded-lg shadow-md hover:scale-110 duration-300"
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="rounded-t-lg cursor-pointer"
+      <div className="max-w-7xl mx-auto p-5">
+        {/* Masonry-like grid with different sizes, neatly aligned */}
+        <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
+          {gallery.map((item) => (
+            <div
+              key={item.id}
+              className="rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 mb-5 break-inside-avoid"
               onClick={() => openModal(item.id)}
-            />
-            <div className="p-3">
-              <h1 className="font-bold text-xl text-gray-600 pb-1">
-                {item.title}
-              </h1>
-              <p className="text-gray-600">{item.description}</p>
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-auto block"
+              />
+              <div className="p-3">
+                <h1 className="font-bold text-xl text-gray-800 mb-1">
+                  {item.title}
+                </h1>
+                <p className="text-gray-500">{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <Modal
